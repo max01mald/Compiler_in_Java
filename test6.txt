@@ -1,0 +1,10 @@
+
+program{
+
+	for(int x=0; x<10; x = x + 1)
+		for(int z = 0; z<10; z = z + 1)
+		{
+			put(x)
+		};;
+
+};

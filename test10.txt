@@ -1,0 +1,18 @@
+class hello{
+int j;
+};
+
+class bye:sin{
+int q;
+};
+
+class sin:bye{
+int q;
+};
+
+int f(int g)
+{
+	float q;
+	return(q);
+};
+

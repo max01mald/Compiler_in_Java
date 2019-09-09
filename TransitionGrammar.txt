@@ -1,0 +1,126 @@
+Prog -> Cdcl cdcl W makeClassList Fdef fdef W makeFuncDefList PROGRAM Fbod fbod W makeStatBlock4 SCOL makeProg
+Cdcl -> CLASS ID makeID Inh inh OCBR makeInherList AD ad CCBR makeMemberList SCOL Cdcl cdcl2 W makeClassDcl
+Cdcl -> EPSILON cdcl3
+Inh -> COL ID makeID2 Minh minh 
+Inh -> EPSILON 
+Minh -> COMA ID makeID3 Minh minh3 
+Minh -> EPSILON minh2
+AD -> TidD tidd W makeTID BD bd W makeMembDecl makeMembDecl2
+AD -> EPSILON ad2
+BD -> Asiz asiz W makeDimList SCOL AD ad3 W
+BD -> OBR Fpara fpara W makeParamList CBR SCOL AD ad4 W
+CD -> IDD2 id2d BD bd W
+BD -> Add add2 makeOP4 Term term4 AexprD aexrd3 W aa makeAexr
+BD -> Astat astat
+BD -> EPSILON bd4
+CD -> FOR OBR Type ID makeID11 Asop asop5 W makeOP2 Expr exr11 W makeExr SCOL Rexpr rexr3 W makeRexl SCOL Astat astat2 W makeAssStat CBR Sblok sb8 W makeStatB SCOL Stmt stmt16
+CD -> RETURN OBR Expr exr12 W makeExr CBR SCOL Stmt stmt17 W makeStat
+CD -> Asiz asiz6 W makeDimList SCOL AD ad6
+CD -> PUT OBR Expr exr13 W makeExr CBR SCOL Stmt stmt18 W makeStat
+CD -> EPSILON cd3
+IDD2 -> ID makeID12 IDD2 id2d3
+IDD2 -> EPSILON id2d4
+TidD -> Type tidd2 W makeT3 TidD ti W
+TidD -> EPSILON
+Fpara -> TidD tidd W makeTID Asiz asiz2 W makeDimList Fparat fparat W makeFparam
+Fpara -> EPSILON fpara2
+Asiz -> OSBR INT makeInt CSBR Asiz asiz3 W az
+Asiz -> EPSILON asiz4
+Fparat -> COMA TidD tidd W makeTID asiz2 Asiz W makeDimList Fparat fparat2 W makeFparam2
+Fparat -> EPSILON fparat3
+Fdef -> Fhea fhea W makeFhea Fbod fbod2 W makeStatBlock2 SCOL Fdef fdef2 W fd makeFuncDef
+Fdef -> EPSILON fdef3
+Fbod -> OCBR StatOVar ovar CCBR
+StatOVar -> Type type W makeT3 Var var StatOVar ovar W v makeStatORVar3
+StatOVar -> Stmt stmt StatOVar ovar W v makeStatORVar
+StatOVar -> EPSILON ovar
+Var -> ID Asiz asiz7 W makeDimList SCOL
+Var -> IDD iddv W ast Astat astat SCOL
+Var -> B
+Fhea -> Type type W makeT3 Hed hed OBR Fpara fpara3 W makeParamList CBR
+Hed -> ID makeID13 Hed hed1
+Hed -> DCOL ID makeID13 he makeScopeSpec
+Hed -> EPSILON hed3
+Stmt -> Astat astat2 SCOL Stmt stmt2 W makeAssStat makeStat
+Stmt -> IF OBR Expr exr W makeExr CBR THEN Sblok sb W ELSE sb5 SblokEL sb4 W SCOL sb5 Sblok sb9 ff makeStatIF makeStat 
+Stmt -> FOR OBR Type makeType3 ID makeID7 Asop asop W makeOP2 Expr exr1 W makeExr2 SCOL Rexpr rexr W makeRelExr SCOL Astat astat3 W makeAssStat makeStat CBR Sblok sb3 W s makeStatBlock SCOL makeStatFOR makeStat
+Stmt -> GET OBR IDD idd2 W makeVar CBR SCOL makeStatKW makeStat
+Stmt -> PUT OBR Expr exr2 W makeExr CBR SCOL makeStatKW makeStat
+Stmt -> RETURN OBR Expr exr3 W makeExr CBR SCOL makeStatKW makeStat
+Stmt -> EPSILON stmt8
+Astat -> IDD idd10 W makeVar Asop asop1 W makeOP2 Expr exr4 W makeExr
+Astat -> Asop asop1 W makeOP2 Expr exr4 W makeExr ass
+Sblok -> OCBR Sblok stmt9 CCBR msb makeStatBlock
+SblokEL -> OCBR Sblok CCBR msbl makeStatBlockEL
+Sblok -> IDD idd3 W makeVar Asop asop2 W makeOP2 Expr exr5 W makeExr SCOL Sblock sb9 W makeAssStat2 makeStat2 makeStatORVar2
+Sblok -> IF OBR Expr exr6 W makeExr CBR THEN Sblok sb4 W sb5 ELSE SblokEL sb4 W SCOL sb5 Sblock sb9 W makeStatIF2 makeStat2 makeStatORVar2
+Sblok -> FOR OBR Type makeType3 ID makeID7 Asop asop3 W makeOP2 Expr exr7 W makeExr SCOL Rexpr rexr W makeRelExr SCOL Astat astat3 W makeAssStat makeStat2 CBR Sblok sb3 W SCOL W makeStatFOR2 makeStat2 makeStatORVar2
+Sblok -> GET OBR IDD idd4 W makeVar CBR SCOL Sblok sb9 W makeStatKW2 makeStat2 makeStatORVar2
+Sblok -> PUT OBR Expr exr6 W makeExr CBR SCOL Sblock sb9 W makeStatKW2 makeStat2 makeStatORVar2
+Sblok -> RETURN OBR Expr exr6 W makeExr CBR SCOL Sblock sb9 W makeStatKW2 makeStat2 makeStatORVar2
+Sblok -> EPSILON sb7
+Var -> EPSILON
+Sign -> PLUS 
+Sign -> MINUS 
+Asop -> EQUALS 
+Rexpr -> Aexpr aexr W aa makeAexr Rop rop W makeOP3 Aexpr aexr2 W aa makeAexr 
+Expr -> Aexpr aexr3 W aa makeAexr ExprD exrd W
+ExprD -> EPSILON exrd1
+ExprD -> Rop rop1 W makeOP3 Aexpr aexr7 W aa makeAexr makeRelExr2
+Rop -> COMPARISON
+Rop -> DNE 
+Rop -> LT 
+Rop -> GT 
+Rop -> LTE 
+Rop -> GTE 
+Aexpr -> Term term W makeTerm AexprD aexrd W
+AexprD -> Add add W makeOP4 Term term2 W makeTerm AexprD aexrd1 W
+AexprD -> EPSILON aexrd2
+Add -> PLUS 
+Add -> MINUS 
+Add -> OR 
+Term -> Fact fact W fi makeFact TermD termd W makeTermD
+Term -> EPSILON termd3
+TermD -> Mult mult Fact fact1 W fi makeFact TermD termd1 W
+TermD -> OBR Apara apara3 W makeApara CBR
+TermD -> Fact fact4 W TermD
+TermD -> EPSILON termd3
+Mult -> MULT 
+Mult -> SLASH 
+Mult -> AND 
+Fact -> IDD idd5 W makeVar
+Fact -> INT makeInt2
+Fact -> FLOAT makeFloat
+Fact -> OBR Aexpr aexrd3 CBR aa makeAexr
+Fact -> NOT Fact fact2 W
+Fact -> Sign sign W Aexpr arith W makeArith makeFact2 trd
+IDD -> ID makeID9 B b W makeVarEl
+B -> C c W dd makeDmem
+B -> D d W makeFcall
+B -> Asop asop4 W makeOP2 Expr exr10 W makeExr
+B -> EPSILON b1
+IDD -> B b W makeVarEl
+B -> PER IDn idn3 W
+C -> Ind ind W makeInL E e W
+D -> OBR Apara apara W makeApara CBR F f W
+E -> M m W
+E -> H h W
+E -> EPSILON
+F -> I i W
+F -> J j W
+F -> EPSILON
+M -> PER IDn idn W
+H -> EPSILON inn
+I -> PER IDn idn1 W
+J -> EPSILON inn
+IDn -> ID makeID15 B b W makeVarEl3 makeVar3 makeFact3 makeTerm3 makeAexr3 makeInL3 inn2
+IDn -> EPSILON idn2
+Ind -> OSBR Aexpr aexr6 W aa makeAexr CSBR Ind ind1 W inl
+Ind -> EPSILON ind2 
+Type -> INTDC
+Type -> FLOATDC
+Type -> ID
+Apara -> Expr exr8 W makeExr Aparat aparat W
+Apara -> EPSILON apara1
+Aparat -> COMA Expr exr9 W makeExr Aparat aparat1 W
+Aparat -> EPSILON aparat2 

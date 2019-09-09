@@ -1,0 +1,108 @@
+S -> Prog S
+S -> EPSILON
+Prog -> Cdcl Fdef PROGRAM Fbod SCOL
+Cdcl -> CLASS ID Inh OCBR AD CCBR SCOL Cdcl
+Cdcl -> EPSILON
+Inh -> COL ID Minh
+Inh -> EPSILON
+Minh -> COMA ID Minh
+Minh -> EPSILON
+AD -> TidD BD
+SblokEL -> Sblok
+AD -> EPSILON
+BD -> Asiz SCOL AD
+BD -> OBR Fpara CBR SCOL AD
+CD -> IDD BD
+BD -> Astat
+CD -> EPSILON
+TidD -> Type TidD
+Fpara -> TidD Asiz Fparat
+Fpara -> EPSILON
+Asiz -> OSBR INT CSBR Asiz
+Asiz -> EPSILON
+Fparat -> COMA TidD Asiz Fparat
+Fparat -> EPSILON
+Fdef -> Fhea Fbod SCOL Fdef
+Fdef -> EPSILON
+Fbod -> OCBR StatOVar CCBR
+StatOVar -> Stmt StatOVar
+Fhea -> Type Hed OBR Fpara CBR
+Hed -> ID Hed
+Hed -> DCOL ID
+Hed -> EPSILON
+Stmt -> Astat SCOL
+Stmt -> IF OBR Expr CBR THEN Sblok ELSE SblokEL SCOL Sblok
+Stmt -> FOR OBR Type ID Asop Expr SCOL Rexpr SCOL Astat CBR Sblok SCOL
+Stmt -> GET OBR IDD CBR SCOL
+Stmt -> PUT OBR Expr CBR SCOL
+Stmt -> RETURN OBR Expr CBR SCOL
+Stmt -> EPSILON
+Astat -> Asop Expr
+Sblok -> OCBR Sblok CCBR
+Sblok -> IDD Asop Expr SCOL Sblok
+Sblok -> IF OBR Expr CBR THEN Sblok ELSE SblokEL SCOL Sblok
+Sblok -> FOR OBR Type ID Asop Expr SCOL Rexpr SCOL Astat CBR Sblok SCOL Sblok
+Sblok -> GET OBR IDD CBR SCOL Sblok
+Sblok -> PUT OBR Expr CBR SCOL Sblok
+Sblok -> RETURN OBR Expr CBR SCOL Sblok
+Sblok -> EPSILON
+Sign -> PLUS
+Sign -> MINUS
+Asop -> EQUALS
+Rexpr -> Aexpr Rop Aexpr
+Expr -> Aexpr ExprD
+ExprD -> EPSILON
+ExprD -> Rop Aexpr
+Rop -> COMPARISON
+Rop -> DNE
+Rop -> LT
+Rop -> GT
+Rop -> LTE
+Rop -> GTE
+Aexpr -> Term AexprD
+AexprD -> Add Term AexprD
+AexprD -> EPSILON
+Add -> PLUS
+Add -> MINUS
+Add -> OR
+Term -> Fact TermD
+TermD -> Mult Fact TermD
+TermD -> EPSILON
+Mult -> MULT
+Mult -> SLASH
+Mult -> AND
+Fact -> IDD
+Fact -> INT
+Fact -> FLOAT
+Fact -> OBR Aexpr CBR
+Fact -> NOT Fact
+Fact -> Sign Aexpr
+IDD -> ID B
+B -> C
+B -> D
+B -> EPSILON
+IDD -> B
+C -> Ind E 
+TermD -> OBR Apara CBR F
+E -> M
+E -> H
+F -> I
+F -> J
+M -> PER IDn
+H -> EPSILON
+I -> PER IDn
+Astat -> IDD Asop Expr
+IDn -> ID B
+IDn -> EPSILON
+Var -> ID Asiz SCOL
+Ind -> OSBR Aexpr CSBR Ind
+Ind -> EPSILON
+Type -> INTDC
+Type -> FLOATDC
+Type -> ID
+Apara -> Expr Aparat
+Apara -> EPSILON
+Aparat -> COMA Expr Aparat
+Aparat -> EPSILON
+StatOVar -> Type Var StatOVar
+Var -> IDD Astat SCOL
