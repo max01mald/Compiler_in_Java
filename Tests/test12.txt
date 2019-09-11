@@ -1,5 +1,0 @@
-program{
-int x;
-
-x = g + 6;
-};
