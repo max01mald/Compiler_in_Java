@@ -1,0 +1,27 @@
+class hello{
+ int test(int q);
+
+};
+
+int test::hello(int g)
+{
+ int c;
+ c = g + 7;
+ return(c);
+ 
+};
+
+program{
+	hello h;
+	int k;
+	k = 13;
+	
+	k = h.test(k);
+	
+	put(k);
+	
+};
+
+
+Is successful, but at return storage is not loaded properly
+For some reason does not pass to right variable

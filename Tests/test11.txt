@@ -1,0 +1,23 @@
+class hello{
+int q;
+int q;
+};
+
+class hello{
+int c;
+};
+
+
+int f(int g){
+int z;
+};
+
+int f(int g){
+int z;
+};
+
+program{
+	int m;
+	int m;
+
+};

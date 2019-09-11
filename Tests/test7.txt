@@ -1,0 +1,14 @@
+program{
+	int x;
+	x = 5;
+	if(x > 10) then{
+		if(x<7) then{
+		put(10);
+	} else {
+	 x = x + 7;
+	 put(x);
+	};} else {
+	 put(7);
+	};
+
+};
