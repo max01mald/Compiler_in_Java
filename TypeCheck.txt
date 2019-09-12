@@ -1,0 +1,4 @@
+Assignment Error Variable null has not been declared  Location 5::6-6
+Assignment Error Variable null has not been declared  Location 
+Parameter Miss Match FCall Error f: Declared: 4 Provided: 2 Location: 
+

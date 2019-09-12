@@ -1,0 +1,313 @@
+cdcl -> Prog = Cdcl
+fdef -> Cdcl = Fdef
+fbod -> Fdef = FbodS
+makeFdefList -> Fdef = makeFdefList(Fdef, Vec[FuncDef])
+makeProg -> Fbod = Prog&& Prog = makeProg(Prog)|| Stmt = Prog&& Prog = makeProg(Prog)
+makeID -> Cdcl = ID&& ID = makeNode(ID)|| AD = ID&& ID = makeNode(ID)
+inh -> ID = Inh
+ad -> Inh = AD|| Inh = CD
+makeClassDcl -> Cdcl = CdclP&& Cdcl = makeClassDcl(Cdcl, ID, InherList, MemberList) 
+clssdcl -> Cdcl = CdclG
+makeClassList -> Cdcl = Cdcl&& Cdcl = makeClassList(Cdcl, Vec[ClassDcl])
+cdcl2 -> AD = CdclS|| CD = CdclS
+cdcl3 -> CD = CD|| AD = AD|| Cdcl = Cdcl
+minh -> ID = Minh
+makeInherList2 -> Inh = makeInherList(Inh, Vec[ID])|| makeInherList(Inh)
+minh2 -> Minh = Inh
+minh3 -> ID = MinhR
+makeID2 -> Inh = ID&& ID = makeNode(ID)
+makeID3 -> Minh = ID&& ID = makeNode(ID)
+makeInherList -> Minh = InhP&& Inh = makeInherList(Inh, Vec[ID])|| makeInherList(Inh)|| Inh = makeInherList(Inh, Vec[ID])|| makeInherList(Inh)
+cd -> AD = CD|| Type = CD
+ad2 -> AD = AD|| Cdcl = Cdcl
+asiz -> BD = Asiz|| B = BD&& BD = Asiz|| CD = Asiz
+ad3 -> Asiz = AD|| AD = ADG
+fpara -> BD = Fpara
+ad4 -> Fpara = AD|| AD = ADG
+idd -> CD = IDD|| Type = IDD
+iddv -> Var = IDDG
+ast -> IDD = VarP
+bd -> B = BD|| H = BD|| IDD2 = BD|| ID = TidDP&& TidD = BD|| Type = BD|| TidD = BDR
+bd1 -> ID = BD
+astat -> Var = Astat|| Asop = Astat
+ass -> Expr = Astat
+cd2 -> AD = CD|| CD = CD|| BD = CD
+id2d -> CD = IDD2
+id2d2 -> AD = IDD2
+id2d3 -> IDD = ID|| ID = ID|| IDD2 = ID
+id2d4 -> IDD2 = IDD2|| ID = ID
+id2d5 -> Type = IDD2
+makeT -> AD = INTDC&& INTDC = makeT(INTDC)
+makeT2 -> AD = FLOATDC&& FLOATDC = makeT(FLOATDC)|| Type = makeT(FLOATDC)
+tidd2 -> TidD = TypeG
+makeT3 -> IDD = TypeP&& Type = makeVar(Type, Vec[VarEl])|| Type = makeT(FLOATDC-INTDC-ID)
+makeID12 -> IDD2 = ID&& ID = makeNode(ID)|| ID = makeNode(ID)
+makeVarDecl -> AD = makeVarDecl(AD, Type- ID, ID, DimList)|| Asiz = ADP&& AD = makeVarDecl(AD, Type ID, ID, DimList)
+makeVarEl -> CD = IDD|| B = IDD&& IDD = makeVarEl(IDD, DMemb)|| IDD = makeVarEl(IDD, DMemb)|| makeVarEl(IDD, FuncCall)|| IDD = IDD
+varel -> IDD = TypeP
+makeMembDecl -> AD = ADP&& AD = makeFDecl(AD, Type-ID, ID, Fpara)|| makeVarDecl(AD, Type-IDD2, ID, Asiz)
+makeMembDecl2 -> AD = makeMemberDecl(AD, AD)
+makeMemberList -> AD = makeMemberList(AD, Vec[MembDcl])|| CD = ADP&& AD = makeMemberList(AD, Vec[MembDcl])
+tidd -> Fpara = TidD|| Fparat = TidD|| AD = TidD|| StatOVar = TidDG
+ti -> Type = TidDR
+makeTID -> TidD = TidDQ&& TidD = makeTID(TidD)
+makeID4 -> Type = IDS&& ID = makeNode(ID)|| INTDC = TidDP&& TidD = ID = makeNode(ID)|| FLOATDC = TidDP&& TidD = ID&& ID = makeNode(ID)
+asiz2 -> ID = Asiz|| TidD = AsizR
+fparat -> Asiz = FparatR|| Fpara = Fparat
+fpara2 -> Fpara = Fpara
+makeInt -> Asiz = INT&& INT = makeNode(INT)
+asiz3 -> INT = AsizS
+asiz4 -> Asiz = Asiz|| Fparat = Fparat
+az -> Asiz = AsizP
+makeDimList -> Asiz = Asiz&& Asiz = makeDimList(Asiz, Vec[INT])|| makeDimList(Asiz)|| Asiz = Asiz&& Asiz = makeDimList(Asiz, Vec[INT])|| makeDimList(Asiz)
+makeType -> Fparat = Type&& makeNode(Type)
+makeID5 -> Type = ID&& makeNode(ID)
+tt -> ID = TidDP
+asiz5 -> ID = Asiz|| Fpara = AsizG|| TidD = Asiz
+fparat2 -> Asiz = FparatR
+fparat3 -> Fparat = Fparat|| Fpara = Fpara
+makeFparam -> Fparat = FparaP&& Fpara = makeFparam(Fpara, Type-ID, ID, DimList)|| makeFparam(Fpara)
+makeFparam2 -> Fparat = FparatP&& Fparat = makeFparam(Fparat, Type-ID, ID, DimList)|| makeFparam(Fparat)
+makeParamList -> Fpara = Fpara&& Fpara = makeParamList(Fparam, Vec[Fparam])|| makeParamList(Fpara)|| BD = Fpara
+fhea -> Fdef = Fhea|| Cdcl = Fhea|| Fbod = Fhea
+fbod2 -> Fparat = Fbod|| Fpara = Fbod|| Fhea = Fbod
+fdef2 -> Fbod = Fdef
+makeFhea -> Fpara = FheaP&& Fhea = makeFhea(Fhea, Type, ScopeSpec-ID, ParamList)
+s -> Sblok = SblokP
+makeStatBlock -> Sblok = makeStatBlock(Sblok, Vec[StatORVar])|| makeStatBlock(Sblok)|| Stmt = makeStatBlock(Stmt, Vec[StatORVar])|| makeStatBlock(Stmt)
+makeStatBlockEL -> SblokEL = makeStatBlock(SblokEL, Vec[StatORVar])|| makeStatBlock(SblokEL)|| Sblok = SblokELP && SblokEl = makeStatBlock(SblokEL, Vec[StatORVar])|| makeStatBlock(SblokEL)
+makeStatBlock2 -> StatOVar = Fbod&& Fbod = makeStatBlock(Fbod, Vec[StatORVar])|| makeStatBlock(Fbod)|| Fbod = makeStatBlock(Fbod, Vec[StatORVar])|| makeStatBlock(Fbod)
+msbl -> Sblok = SblokELP|| SblokEL = SblokEL
+msb -> if Sblok = SblokP
+fd -> Fdef = FdefQ
+makeFuncDef -> Fdef = makeFuncDef(Fdef, Fhea, Fbod)
+makeFuncDefList -> Fdef = makeFuncDefList(Fdef, Vec[FuncDef]) 
+fdef3 -> Fdef = Fdef
+ad5 -> Fbod = AD
+stmt -> AD = Stmt|| CD = Stmt|| StatOVar = Stmt|| Stmt = StatOVar
+makeVarDecl2 -> AD = makeVarDecl(AD, ADC)|| CD = makeVarDecl(CD, CDC)
+sb9 -> IDD = Sblok|| Expr = Sblok|| Sblok = SblokG
+sb10 -> Sblok = Sblok
+makeStat -> Stmt = makeStat(Stmt, Stmt)
+makeStat2 -> Sblok = makeStat(Sblok, Sblok)|| Stmt = makeStat(Stmt, Stmt)
+makeStatORVar -> AD = makeStatORVar(AD, Vari)|| Stmt = makeStatORVar(Stmt, Stat)|| StatOVar = makeStatORVar(StatOVar, Stat)
+makeStatORVar2 -> Sblok = makeStatORVar(Sblok, Sblok)|| Stmt = makeStatORVar(Stmt, Stmt)
+makeStatORVar3 -> StatOVar = makeStatORVar(StatOVar, Var, Asop, Expr)|| makeStatORVar(StatOVar, StatOVar)
+makeStatORVar4 -> StatOVar = Fbod&& StatOVar = makeStatORVar(StatOVar, StatOVar)
+ovar -> Fbod = StatOVar|| Asiz = VarP&& Var = StatOVar|| Astat = VarP&& Var = StatOVarS|| Stmt = StatOVar|| StatOVar = StatOVar|| IDD = StatOVar
+fb -> StatOVar = FbodP
+v -> StatOVar = StatOVarP
+v2 -> StatOVar = FbodP
+var -> Type = Var|| Type = Var|| INTDC = Var|| FLOATDC = Var|| IDD = VarS|| TidD = VarR
+asiz7 -> ID = Asiz|| Var = AsizG
+fbod3 -> Fbod = Fbod|| Stmt = Fbod
+fbod4 -> Fbod = Fbod
+makeType2 -> Fhea = Type&& Type = makeNode(Type)
+type -> TidD = Type|| Fhea = Type|| StatOVar = Type|| Sblok = Type
+type2 -> Fparat = Type
+hed -> Type = Hed|| INTDC = Hed|| FLOATDC = Hed
+fpara3 -> Hed = Fpara
+makeID6 -> Hed = ID&& ID = makeNode(ID)
+makeID13 -> Hed = IDG&& ID = makeNode(ID)
+makeID14 -> Var = ID&& ID = makeNode(ID)
+makeID15 -> IDn = ID&& ID = makeNode(ID)
+hed1 -> ID = HedS
+hed2 -> Hed = HedS
+hed3 -> Hed = HedP
+he -> ID = HedP
+makeScopeSpec -> Hed = Hed&& Hed = makeScopeSpec(Hed, Vec[ID])
+atat2 -> Stmt = Astat
+stmt2 -> Astat = Stmt|| Expr = Stmt
+exr -> Stmt = Expr
+sb -> Expr = Sblok|| AexprD = Sblok
+sb2 -> Sblok = Sblok|| CD = Sblok|| Stmt = Sblok
+stmt3 -> Sblok = StmtP|| Stmt = Stmt
+makeStatBlock3 -> Sblok = makeStatBlock(Sblok, Vec[StatORVar])|| makeStatBlock(Sblok)
+makeStatBlock4 -> Fbod = makeStatBlock(Fbod, Vec[StatORVar])|| StatOVar = FbodP&& Fbod = makeStatBlock(Fbod, Vec[StatORVar])
+makeAssStat -> Stmt = StmtP&& Stmt = makeAssStat(Astat, Asop, Vari, Expr)|| Astat = makeAssStat(Astat, Asop, Vari, Expr)|| Expr = AstatP&& Astat = makeAssStat(Astat, Asop, Vari, Expr)
+makeAssStat2 -> Stmt = SblokP&& Sblok = makeAssStat(Sblok, Asop, Vari, Expr)|| Expr = SblokP&& Sblok = makeAssStat(Sblok, Asop, Vari, Expr)|| Sblok = SblokP&& Sblok = makeAssStat(Sblok, Asop, Vari, Expr)
+makeExr -> ExprD = ExprP&& Expr = makeExr(Expr, Aexpr- Rexpr)|| Aexpr = ExprP&& Expr = makeExr(Expr, Aexpr- Rexpr)|| Expr = makeExr(Expr, Aexpr- Rexpr)
+makeType3 -> Stmt = Type&& Type = makeT(INTDC-FLOATDC-ID)|| Sblok = Type&& Type = makeT(INTDC-FLOATDC-ID)
+makeID7 -> INTDC = ID|| Type = ID&& ID = makeNode(ID)
+exr1 -> Asop = Expr
+makeExr2 -> Expr = makeExr(Expr, Aexpr- Rexpr)
+rexr -> Expr = Rexpr
+astat3 -> Rexpr = Astat
+sb3 -> Stmt = Sblok|| Sblok = SblokR
+stmt4 -> Sblok = Stmt|| Stmt = StmtR
+makeStatIF -> Stmt = StmtP&& Stmt = makeStatIF(Stmt, Expr)|| StatOVar = Stmt&& Stmt = makeStatIF(Stmt, Expr)|| Sblok = Stmt&& Stmt = makeStatIF(Stmt, Expr)
+makeStatIF2 -> Sblok = SblokP&& Sblok = makeStatIF(Sblok, Expr)|| Stmt = SblokP&& Sblok = makeStatIF(Sblok, Expr)
+makeStatFOR -> Sblok = StmtP&& Stmt = makeStatFOR(Stmt, Type, ID, Expr, Rexpr)
+makeStatFOR2 -> Sblok = SblokP&& Sblok = makeStatFOR(Sblok, Type, ID, Expr, Rexpr)
+ff -> SblokEL = Stmt|| Sblok = StmtQ
+idd2 -> Stmt = IDD
+stmt5 -> IDD = Stmt|| E = Stmt
+makeStatKW -> Expr = StmtP&& Stmt = makeStatKW(Stmt, Vari-Expr)|| IDD = StmtP&& Stmt = makeStatKW(Stmt, Vari-Expr)
+makeStatKW2 -> Sblok = SblokP&& Sblok = makeStatKW(Sblok, Vari-Expr)|| Expr = SblokP&& Sblok = makeStatKW(Sblok, Vari-Expr)
+exr2 -> Stmt = Expr
+stmt6 -> Expr = Stmt|| ExprD = Stmt
+exr3 -> Stmt = ExprG
+stmt7 -> Expr = Stmt|| ExprD = Stmt
+stmt8 -> Stmt = Stmt
+expr4 -> Astat = Expr
+stmt9 -> Stmt = Sblok|| Sblok = SblokG
+idd3 -> Sblok = IDD
+exr5 -> Asop = Expr
+stmt10 -> Expr = Stmt
+exr6 -> Sblok = Expr
+sb4 -> Expr = Sblok|| SblokEL = SblokG
+sb5 -> Sblok = SblokELR|| SblokEL = SblokR
+stmt11 -> Sblok = Stmt
+makeType4 -> Sblok = Type&& Type = makeNode(Type)
+sb6 -> Astat = Sblok
+stmt12 -> Sblok = Stmt
+makeID8 -> IDD = ID&& makeNode(ID)
+idd4 -> Sblok = IDD
+stmt13 ID = Stmt
+stmt14 -> Expr = Stmt
+stmt15 -> Expr = Stmt
+sb7 -> Sblok = Sblok|| SblokEL = SblokEL|| Stmt = Stmt
+aexr -> Rexrp = Aexpr|| Rexpr = Aexpr|| AexprD = AexprP
+aexr2 -> Aexpr = Aexpr|| Rop = Aexpr
+makeRelExr -> Aexpr = RexprP&& Rexpr = makeRelExr(Rexpr, Rop)
+makeRelExr2 -> Aexpr = ExprP&& Expr = makeRelExr(Expr, Rop)
+rexr2 -> Aexpr = Rexpr
+asop -> ID = Asop
+asop1 -> Astat = Asop|| IDD = Asop
+asop2 -> IDD = Asop
+asop3 -> ID = Asop
+exr7 -> Asop = Expr
+exr4 -> Asop = Expr
+makeOP2 -> Asop = makeNode(Asop)
+makeOP -> Sign = makeNode(Sign)
+aexr3 -> Expr = Aexpr
+exrd -> Expr = ExprD|| Aexpr = ExprD|| AexprD = ExprD|| Aexpr = ExprD
+makeExr -> ExrpD = Expr&& Expr = makeExr(Expr, Aexpr-Rexpr)
+exrd1 -> AexprD = Aexpr&& Aexpr = ExprD|| ExprD = ExprP|| Aexpr = Aexpr
+aexr4 -> Rop = Aexpr
+rop -> Rexpr = Rop|| AexprD = Rop|| Aexpr = Rop
+rop1 -> ExprD = Rop
+makeOP3 -> Rop = makeNode(Rop)
+term -> Term = Term|| Aexpr = Term|| Rexpr = Aexpr&& Aexpr = Term
+aexrd -> TermD = AexprD|| F = AexprD|| Term = AexprD|| Fact = AexprD|| Mult = AexprD
+aa -> Aexpr = Aexpr|| AexprD = Expr-AexprP
+makeAexr -> Aexpr = makeAexr(Aexpr, Add, AexprD, Term)|| makeAexr(Aexpr, Term)
+makeAexrD -> AexprD = AexrDP&& A= makeAexr(AexprD, Add, AexprD, Term)|| AexprD = makeAexr(AexprD,Term)
+add -> AexprD = Add
+term2 -> Add = Term
+aexrd1 -> Term = AexprD|| TermD = AexprD|| F = AexprD|| Mult = AexrDR
+aexrd2 -> AexprD = AexprD|| Aexpr = Aexpr
+makeOP4 -> Add = makeNode(Add)
+makeOP5 -> Mult = makeNode(Mult)
+fact -> Term = Fact
+termd -> Fact = TermD|| H = TermD|| B = TermD|| E = TermD|| AexprD = TermD|| INT = TermD
+mult -> TermD = Mult
+fact1 -> Mult = Fact
+termd1 -> Fact = TermD|| AexprD = TermD|| B = TermD|| TermD = TermD
+termd3 -> TermD = TermD-TermP|| INT = TermD|| Term = TermD|| Mult = Mult
+idd5 -> Fact = IDD
+makeInt2 -> Fact = INT&& INT = makeNode(INT)
+makeFloat -> Fact = FLOAT&& FLOAT = makeNode(FLOAT)
+aexr5 -> Fact = Aexpr
+makeTerm -> TermD = TermP&& Term = makeTerm(Term, Mult, Fact)|| makeTerm(Term, Fact)|| Term = makeTerm(Term, Mult, Fact)|| makeTerm(Term, Fact)
+makeTerm2 -> Term = makeTerm(Term, Mult, Term, Fact)|| Term = makeTerm(Term, Fact)
+sign -> Fact = Sign
+fact3 -> Sign = Fact
+fact2 -> Fact = FactG|| Sign = Fact
+fi -> Fact = FactP|| IDD = FactP|| INT = INT|| Aexpr = Aexpr|| FLOAT = FLOAT|| Stmt = Stmt|| Sblok = StmtP|| TermD = FactP
+makeFact -> INT = FactP&& Fact = makeFact(Fact, Vari-INT-FLOAT-Fcall-Aexpr)|| IDD = makeFact(IDD, Vari)|| Aexpr = FactP&& Fact = makeFact(Fact, Aexpr)|| FLOAT = FactP&& Fact = makeFact(Fact, Vari-INT-FLOAT-Fcall-Aexpr-Sign)|| Fact = makeFact(Fact, Vari-INT-FLOAT-Fcall-Aexpr-Sign)|| TermD = makeFact(TermD, Fact)
+fact4 -> TermD = FactG
+arith -> Sign = AexprR
+trd -> Fact = TermDP
+makeTermD -> TermD = makeTerm(TermD, Mult, Fact)|| makeTerm(TermD, Fact)|| Term = makeTerm(Term, Mult, Fact)|| makeTerm(Term, Fact)
+td -> Apara = TermD|| TermD = TermD|| Term = Term
+makeArith -> AexprD = AexprP&& Aexpr = makeAexr(Aexpr, AexprD)|| makeAexr(Aexpr, Term)
+makeFact2 -> Aexpr = FactP&& Fact = makeFact(Fact, Sign, Aexpr)
+makeID9 -> IDD = IDD|| Type = IDD|| Fact = IDD&& IDD = ID&& ID = makeNode(ID)
+b -> ID = B|| Var = B|| IDD = B
+c -> B = C|| IDD = IDD
+d -> B = D
+b1 -> B = B|| ID = B
+makeID10 -> B = ID&& ID = makeNode(ID)
+ind -> C = Ind|| IDD = IDD
+e -> Ind = E|| IDD = IDD
+apara -> D = Apara
+f -> Apara = F
+m -> E = M
+h -> E = H|| B = H|| Ind = H|| IDD = IDD
+i -> F = I
+j -> F = J
+idn -> M = IDn
+h1 -> H = H
+idn1 -> I = IDn
+j1 -> J = J
+idd6 -> IDn = IDD
+idd11 -> Asop = IDD
+idn2 -> IDn = IDn
+idd7 -> Var = IDD
+aexr6 -> Ind = Aexpr|| Aexpr = Aexpr
+aexr7 -> ExprD = Aexpr|| Rop = Aexpr
+ind1 -> AexprD = Ind|| Aexpr = Ind
+ind2 -> Ind = Ind|| IDD = IDD|| Aexpr = Aexpr
+idd8 -> Type = IDD
+exr8 -> Apara = Expr
+aparat -> Expr = Aparat|| ExprD = Aparat
+apara1 -> Apara = Apara
+exr9 -> Aparat = Expr
+aparat1 -> Expr = Aparat
+aparat2 -> Aparat = Aparat
+idd9 -> AD = IDD
+bd2 -> ID = BD|| ExprD = BD|| AexprD = BD|| E = BD
+cd3 -> BD = CD|| CD = CD|| AD = AD|| Stmt = CD|| Cdcl = Cdcl
+asop4 -> B = Asop
+exr10 -> Asop = Expr
+makeType5 -> AD = CD&& CD = Type&& Type = makeNode(Type)|| CD = Type&& Type = makeNode(Type)
+makeID11 -> Type = ID&& ID = makeNode(ID)
+asop5 -> ID = Asop
+exr11 -> Asop = Expr
+rexr3 -> Expr = Rexpr|| ExprD = Rexpr
+astat2 -> Rexpr = Astat|| AexprD = Astat|| Stmt = Astat
+sb8 -> Astat = Sblok|| CD = Sblok
+stmt16 -> Sblok = Stmt|| Stmt = Stmt|| AD = Stmt
+idd10 -> Astat = IDD
+bd3 -> IDD = BD|| ExprD = BD|| F = BD
+cd4 -> BD = CD|| AexprD = CD
+bd4 -> BD = BD
+e2 -> E = E
+idd11 -> Stmt = IDD|| Stmt = ID
+bd5 -> IDD = BD|| ExprD = BD|| E = BD
+bd6 -> ID = ADP&& AD = BD
+cd5 -> BD = CD|| AD = CD|| F = CD|| CD = CD
+apara2 -> Expr = Apara
+f2 -> Apara = F|| Aparat = F
+f3 -> F = F
+add2 -> BD = Add
+term4 -> Add = Term
+aexrd3 -> Term = AexprD|| TermD = AexprD|| Expr = AexprD|| Fact = AexprG
+exr12 -> CD = Expr|| AD = CD&& CD = Expr
+stmt17 -> Expr = Stmt|| ExprD = Stmt
+apara3 -> TermD = Apara
+f4 -> Apara = F|| Aparat = F
+asiz6 -> CD = Asiz|| BD = Asiz|| ExprD = CD&& CD = Asiz
+ad6 -> Asiz = AD
+idn3 -> B = IDn
+exr13 -> CD = Expr|| AD = CD&& CD = Expr
+stmt18 -> Expr = Stmt|| ExprD = Stmt
+apa -> Apara = AparaP
+makeApara -> Aparat = AparaQ&& Aparat = AparaP&& Apara = makeApara(Apara, Vec[Expr])
+inl -> Ind = IndP
+makeInL -> Ind = makeInL(Ind, Vec[Aexpr])|| makeInL(Ind)|| IDD = IDD|| Aexpr = IndS&& Ind = makeInL(Ind, Vec[Aexpr])|| makeInL(Ind)
+makeInL2 -> Ind = makeInL(Ind)
+makeInL3 -> Aexpr = makeInL(Aexpr, Vec[Aexpr])
+makeFact3 -> IDD = makeFact(IDD, Vari)
+makeTerm3 -> Fact = makeTerm(Fact, Fact)
+makeAexr3 -> Term = makeAexr(Term, Term)
+makeVarEl3 -> IDn = makeVarEl(IDn, DMemb-FuncCall)|| IDD = makeVarEl(IDD, DMemb-FuncCall)
+makeVar3 -> IDn = makeVar(IDn, Vec[VarEl])|| IDD = makeVar(IDD, Vec[VarEl])
+inn -> J = IDn-IDDP|| E = IDn-IDDP|| IDD = IDD|| Fact = Fact|| H = IDn-IDDP
+inn2 -> Aexpr = IDDP
+makeFcall -> D = IDD&& IDD = makeFcall(IDD, ID, Aparam)|| IDn = makeFcall(IDn, ID, Aparam)|| F = IDDP&& IDD = makeFcall(IDD, ID, Aparam)||Apara = D&& D = IDD&& IDD = makeFcall(IDD, ID, Aparam)|| IDD = makeFcall(IDD, ID, Aparam)
+dd -> H = IDn-IDDP|| IDD = IDD|| E = IDn-IDDP|| IDn = IDn
+makeDmem -> IDD = makeDmem(IDD, ID-NULL, InL)|| IDn = makeDmem(IDn, ID-NULL, InL)|| C = IDDP && IDD = makeDmem(IDD, ID-NULL, InL)
+makeVar -> IDD = makeVar(IDD, Vec[VarEl])
+makeFcall2 -> IDD = Fact&& Fact = makeFcall(Fact, ID, Apara)

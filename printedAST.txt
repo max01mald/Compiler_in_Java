@@ -1,0 +1,110 @@
+=====================================================================
+Node type                 | data      | type      | subtreestring
+=====================================================================
+Element_Node.ProgNode     |           | Program   |              
+  Element_Node.ClassListNod |           | ClassList |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.FuncDefListNod |           | FuncDefList |              
+  Element_Node.FuncDefNode |           | FuncDef   |              
+  Element_Node.TypeNode    | INTDC     | Type      |              
+  Element_Node.IdNode      | f         | ID        |              
+  Element_Node.ParamListNod |           | ParamList |              
+  Element_Node.ParamNode   |           | Fparam    |              
+  Element_Node.TypeNode    | INTDC     | Type      |              
+  Element_Node.IdNode      | g         | ID        |              
+  Element_Node.DimNode     |           | DimList   |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.StatBlockNod |           | StatBlock |              
+  AST_Tree.AST_Node        |           | StatORVar |              
+  Element_Node.VarDeclNode |           | StatORVar |              
+  Element_Node.TypeNode    | INTDC     | Type      |              
+  Element_Node.IdNode      | x         | ID        |              
+  Element_Node.DimNode     |           | DimList   |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.AssignStatNod | =         | StatORVar |              
+  AST_Tree.AST_Node        |           | Vari      |              
+  Element_Node.IdNode      | x         | ID        |              
+  Element_Node.IndexListNod |           | InL       |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.NumNode     | 5         | Expr      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.AssignStatNod | =         | StatORVar |              
+  AST_Tree.AST_Node        |           | Vari      |              
+  Element_Node.IdNode      | x         | ID        |              
+  Element_Node.IndexListNod |           | InL       |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.AddOpNode   | +         | Expr      |              
+  AST_Tree.AST_Node        |           | Fact      |              
+  Element_Node.NumNode     |           | VarEl     |              
+  Element_Node.IdNode      | x         | ID        |              
+  Element_Node.IndexListNod |           | InL       |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | Fact      |              
+  AST_Tree.AST_Node        |           | Term      |              
+  Element_Node.IdNode      | g         | ID        |              
+  Element_Node.IndexListNod |           | InL       |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.ReturnStatNod | return    | StatORVar |              
+  AST_Tree.AST_Node        |           | Expr      |              
+  Element_Node.IdNode      | x         | ID        |              
+  Element_Node.IndexListNod |           | InL       |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.ProgramBlockNod |           | ProgBlock |              
+  AST_Tree.AST_Node        |           | StatORVar |              
+  Element_Node.VarDeclNode |           | StatORVar |              
+  Element_Node.TypeNode    | INTDC     | Type      |              
+  Element_Node.IdNode      | j         | ID        |              
+  Element_Node.DimNode     |           | DimList   |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.AssignStatNod | =         | StatORVar |              
+  AST_Tree.AST_Node        |           | Vari      |              
+  Element_Node.IdNode      | j         | ID        |              
+  Element_Node.IndexListNod |           | InL       |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.NumNode     | 5         | Expr      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.AssignStatNod | =         | StatORVar |              
+  AST_Tree.AST_Node        |           | Vari      |              
+  Element_Node.IdNode      | j         | ID        |              
+  Element_Node.IndexListNod |           | InL       |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.FuncCallNod |           | Expr      |              
+  Element_Node.IdNode      | f         | ID        |              
+  AST_Tree.AST_Node        |           | Aparam    |              
+  Element_Node.NumNode     |           | Expr      |              
+  Element_Node.IdNode      | j         | ID        |              
+  Element_Node.IndexListNod |           | InL       |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  Element_Node.PutStatNode | put       | StatORVar |              
+  AST_Tree.AST_Node        |           | Expr      |              
+  Element_Node.IdNode      | j         | ID        |              
+  Element_Node.IndexListNod |           | InL       |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+  AST_Tree.AST_Node        |           | NULL      |              
+=====================================================================
+
